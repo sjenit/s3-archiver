@@ -1,0 +1,15 @@
+{
+  "name": "s3-archiver",
+  "version": "1.0.0",
+  "description": "Zips and uploads given files from S3 back to S3",
+  "main": "index.js",
+  "keywords": ["zip", "s3", "upload", "archive"],
+  "author": "RedbackThomson <redbackthomson@hotmail.com> (https://rdbk.tv)",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^1.1.0",
+    "async": "^2.0.1",
+    "aws-sdk": "^2.6.3",
+    "node.extend": "^1.1.6"
+  }
+}

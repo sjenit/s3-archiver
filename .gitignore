@@ -1,0 +1,5 @@
+node_modules/
+*.zip
+s3-archiver.sublime-project
+s3-archiver.sublime-workspace
+test.js
