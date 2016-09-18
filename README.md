@@ -5,6 +5,8 @@ This allows for easier file backups or for serving a large number of files.
 
 ## Usage
 
+```npm install s3-archiver```
+
 ### Setup
 ```
 var s3Archiver = require('s3-archiver');
