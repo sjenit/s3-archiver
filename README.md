@@ -37,7 +37,7 @@ var archiver = new s3Archiver({
 archiver.zipFiles(["images/1S0QWQLR1Z.jpg", "images/91D6WX13ZG.png"], "downloads/backup-1.zip", {
   ACL: "public-read"
 }, function(err, data) {
-  console.log(data.URL);
+  console.log(data.Location);
 });
 ```
 
