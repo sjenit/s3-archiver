@@ -94,7 +94,7 @@ s3Archiver.prototype.zipFiles = function(fileNames, outputFile, uploadOptions, c
         var fileName = s3Archiver.generateFileName(file);
         //Ensure the file name is valid
         if(fileName !== "") {
-          archive.append(data.Body, {name: fileName});
+          archive.append(data.Body, {name: fileName, prefix: s3Archiver.localConfig.filePrefix});
         }
         return c(null, file);
       });

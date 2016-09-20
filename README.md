@@ -18,7 +18,8 @@ var archiver = new s3Archiver({
   bucket: "XXX"
 }, {
   folder: "images",
-  filePath: __dirname
+  filePath: __dirname,
+  filePrefix: "profile-pics/"
 });
 ```
 
@@ -31,6 +32,7 @@ var archiver = new s3Archiver({
 - Local Config
   - folder - (String) The folder in the bucket you want the files from (eg. images)
   - filePath - (String) The absolute file path for the temporary file to be saved to
+  - filePrefix - (String) The path inside the zip to place the files
 
 ### Example
 ```
