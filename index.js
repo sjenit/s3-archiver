@@ -101,6 +101,14 @@ s3Archiver.prototype.zipFiles = function(fileNames, outputFile, uploadOptions, c
     }, 
     //Upon appending all files
     function(err, res) {
+      //Allow users the ability to edit the zip
+      if(s3Archiver.localConfig.finalizing && s3Archiver.localConfig.finalizing instanceof Function)
+      {
+        return s3Archiver.localConfig.finalizing(archive, function() {
+          archive.finalize();
+        });
+      }
+
       archive.finalize();
     });
   });

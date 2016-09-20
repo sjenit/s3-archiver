@@ -8,7 +8,7 @@ This allows for easier file backups or for serving a large number of files.
 ```npm install s3-archiver```
 
 ### Setup
-```
+```JavaScript
 var s3Archiver = require('s3-archiver');
 
 var archiver = new s3Archiver({
@@ -19,7 +19,8 @@ var archiver = new s3Archiver({
 }, {
   folder: "images",
   filePath: __dirname,
-  filePrefix: "profile-pics/"
+  filePrefix: "profile-pics/",
+  finalizing: finalizeArchive
 });
 ```
 
@@ -33,9 +34,10 @@ var archiver = new s3Archiver({
   - folder - (String) The folder in the bucket you want the files from (eg. images)
   - filePath - (String) The absolute file path for the temporary file to be saved to
   - filePrefix - (String) The path inside the zip to place the files
+  - finalizing - (Function(Object, Function())) Intercepts the finalizing stage of the archive.
 
 ### Example
-```
+```JavaScript
 archiver.zipFiles(["images/1S0QWQLR1Z.jpg", "images/91D6WX13ZG.png"], "downloads/backup-1.zip", {
   ACL: "public-read"
 }, function(err, data) {
@@ -50,3 +52,22 @@ archiver.zipFiles(["images/1S0QWQLR1Z.jpg", "images/91D6WX13ZG.png"], "downloads
 - Callback - (Function(Object, Object)) Called when the zip file has been uploaded
   - Error - (Object) If there was an S3 error upon uploading (or null if no error)
   - Data - (Object) The S3 upload data upon successful upload
+
+### Intercepting Archive
+```JavaScript
+var s3Archiver = require('s3-archiver');
+
+var archiver = new s3Archiver({
+  accessKeyId: "XXX",
+  secretAccessKey: "XXX",
+  region: "us-west-1",
+  bucket: "XXX"
+}, {
+  finalizing: function(archive, finalize) {
+    //Add files, change permissions, etc.
+    archive.append(anotherFile, {name: 'anotherFile.png'});
+    //Must call finalize to complete the archiving
+    finalize();
+  }
+});
+```
