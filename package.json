@@ -1,6 +1,6 @@
 {
   "name": "s3-archiver",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Zips and uploads given files from S3 back to S3",
   "main": "index.js",
   "keywords": ["zip", "s3", "upload", "archive"],
