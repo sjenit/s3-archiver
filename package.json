@@ -1,11 +1,12 @@
 {
   "name": "s3-archiver",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Zips and uploads given files from S3 back to S3",
   "main": "index.js",
   "keywords": ["zip", "s3", "upload", "archive"],
-  "author": "RedbackThomson <redbackthomson@hotmail.com> (https://rdbk.tv)",
+  "author": "RedbackThomson <RedbackThomson@gmail.com> (https://rdbk.tv)",
   "license": "ISC",
+  "homepage": "https://github.com/SDHacks/s3-archiver", 
   "dependencies": {
     "archiver": "^1.1.0",
     "async": "^2.0.1",
