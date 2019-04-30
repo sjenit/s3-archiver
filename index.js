@@ -66,9 +66,9 @@ s3Archiver.prototype.zipFiles = function(fileNames, outputFile, uploadOptions, c
       }
 
       //Delete the temporary file
-      fs.unlink(fileName);
-
-      callback(null, data);
+      fs.unlink(fileName, function(err) {
+		callback(null, data);
+	  });
     });
   });
 
