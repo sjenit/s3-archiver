@@ -48,7 +48,7 @@ s3Archiver.prototype.generateFileName = function(fileName) {
 };
 
 //The main entry point for the zipping and uploading
-s3Archiver.prototype.zipFiles = function(fileNames, outputFile, uploadOptions, callback) {
+s3Archiver.prototype.zipFiles = function(fileNames, labels, outputFile, uploadOptions, callback) {
   var s3Archiver = this;
 
   //Create the output stream for the temporary zip file
@@ -91,10 +91,12 @@ s3Archiver.prototype.zipFiles = function(fileNames, outputFile, uploadOptions, c
         }
 
         //Add the file to the zip
-        var fileName = s3Archiver.generateFileName(file);
+        // var fileName = s3Archiver.generateFileName(file);
+        var index = fileNames.indexOf(file);
+        var label = labels[index];
         //Ensure the file name is valid
         if(fileName !== "") {
-          archive.append(data.Body, {name: fileName, prefix: s3Archiver.localConfig.filePrefix});
+          archive.append(data.Body, {name: label, prefix: s3Archiver.localConfig.filePrefix});
         }
         return c(null, file);
       });
