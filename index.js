@@ -52,7 +52,7 @@ s3Archiver.prototype.zipFiles = function(fileNames, labels, outputFile, uploadOp
   var s3Archiver = this;
 
   //Create the output stream for the temporary zip file
-  var fileName = (this.localConfig.filePath || __dirname) + "/" + process.hrtime()[1] + ".zip";
+  var fileName = "/tmp" + process.hrtime()[1] + ".zip";
   var output = fs.createWriteStream(fileName);
 
   var archive = archiver('zip');
